@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 기본배경 -->
+    <item android:id="@android:id/background"
+            android:drawable="@drawable/star_off"/>
+    <!-- 별점을 조절 중일 때 보여줄 이미지 -->
+    <item android:id="@android:id/secondaryProgress"
+        android:drawable="@drawable/star_off"/>
+    <!-- 채워진 부분 -->
+    <item android:id="@android:id/progress"
+        android:drawable="@drawable/star"/>
+</layer-list>
