@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.si312.mysummer">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MySummer">
+        <activity
+            android:name=".mysummer15Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer14Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer13Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer12Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer11Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer10Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer9Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer8Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer7Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer6Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer5Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer4Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer3Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer2Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".mysummer1Actvity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
