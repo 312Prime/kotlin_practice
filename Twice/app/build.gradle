@@ -4,15 +4,14 @@ plugins {
 }
 
 android {
-
-    //안드로이드 뷰 바인딩 기능을 활성화 합니다.
-    buildFeatures {
-        viewBinding =  true
+    buildFeatures{
+        viewBinding= true
     }
+
     compileSdk 31
 
     defaultConfig {
-        applicationId "kr.co.si312.button"
+        applicationId "kr.co.si312.twice"
         minSdk 23
         targetSdk 31
         versionCode 1
@@ -34,7 +33,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
 }
 
 dependencies {
