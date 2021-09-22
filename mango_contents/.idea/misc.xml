@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/mango_contents/app/src/main/res/drawable/radius.xml" value="0.3731481481481482" />
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/mango_contents/app/src/main/res/layout/activity_main.xml" value="0.553125" />
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/mango_contents/app/src/main/res/layout/activity_splash.xml" value="0.5" />
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/mango_contents/app/src/main/res/layout/radius.xml" value="0.2777777777777778" />
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/mango_contents/app/src/main/res/layout/rv_item.xml" value="0.5" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
