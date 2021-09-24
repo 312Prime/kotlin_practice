@@ -16,7 +16,18 @@ class RVAdapter(val context : Context, val List : MutableList<ContentsModel>) : 
         return ViewHolder(v)
     }
 
+    interface  ItemClick{
+        fun onClick(view: View, position: Int)
+    }
+    var itemClick : ItemClick? = null
+
     override fun onBindViewHolder(holder: RVAdapter.ViewHolder, position: Int) {
+
+        if (itemClick != null) {
+            holder?.itemView.setOnClickListener{ v->
+                itemClick!!.onClick(v,position)
+            }
+        }
         holder.bindItems(List[position])
     }
 
