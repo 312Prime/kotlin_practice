@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/drawable/background_radius.xml" value="0.26979166666666665" />
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/drawable/background_radius_yellow.xml" value="0.26979166666666665" />
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/layout/activity_intro.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/layout/activity_join.xml" value="0.2390625" />
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
+        <entry key="..\:/AndroidProjects/kotlin_practice/MySoloLife/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/Ryclia/Desktop/kotlin/MySoloLife/app/src/main/res/drawable/background_radius.xml" value="0.2824074074074074" />
         <entry key="..\:/Users/Ryclia/Desktop/kotlin/MySoloLife/app/src/main/res/layout/activity_intro.xml" value="0.33" />
         <entry key="..\:/Users/Ryclia/Desktop/kotlin/MySoloLife/app/src/main/res/layout/activity_splash.xml" value="0.25" />

@@ -1,13 +1,12 @@
-package kr.co.si312.mysololife
+package kr.co.si312.mysololife.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kr.co.si312.mysololife.R
 
-class MainActivity : AppCompatActivity() {
-
+class JoinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_join)
     }
 }

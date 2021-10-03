@@ -31,6 +31,7 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/loginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
@@ -40,6 +41,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/joinBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
@@ -49,6 +51,7 @@
                 android:textStyle="bold" />
 
             <Button
+                android:id="@+id/noAccountBtn"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
