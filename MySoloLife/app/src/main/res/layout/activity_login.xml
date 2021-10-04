@@ -31,6 +31,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/emailArea"
             style="@style/AuthEditText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -44,11 +45,12 @@
             android:background="#999999"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:hint="password"
-            android:inputType="textPassword"
+            android:id="@+id/passwordArea"
             style="@style/AuthEditText"
-            android:layout_height="50dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="password"
+            android:inputType="textPassword" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,12 +58,14 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="#999999"/>
+
         <Button
+            android:id="@+id/LoginBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="20dp"
             android:background="@drawable/background_radius_yellow"
-            android:text="로그인하기"/>
+            android:text="로그인하기" />
 
     </LinearLayout>
 
