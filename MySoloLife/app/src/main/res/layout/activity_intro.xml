@@ -56,7 +56,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/background_radius"
-                android:text="비회원 가입"
+                android:text="비회원 로그인"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 

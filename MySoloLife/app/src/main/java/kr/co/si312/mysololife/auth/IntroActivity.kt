@@ -37,7 +37,7 @@ class IntroActivity : AppCompatActivity() {
             auth.signInAnonymously()
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this,"익명 로그인 성공",Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
