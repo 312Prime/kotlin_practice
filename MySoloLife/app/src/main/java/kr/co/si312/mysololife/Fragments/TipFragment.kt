@@ -1,13 +1,16 @@
 package kr.co.si312.mysololife.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.contentValuesOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import kr.co.si312.mysololife.R
+import kr.co.si312.mysololife.contentsList.ContentsListActivity
 import kr.co.si312.mysololife.databinding.FragmentTipBinding
 
 class TipFragment : Fragment() {
@@ -25,6 +28,11 @@ class TipFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = FragmentTipBinding.inflate(layoutInflater)
+
+        binding.category1.setOnClickListener {
+            val intent = Intent(context, ContentsListActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.homeTap.setOnClickListener {
             it.findNavController().navigate(R.id.action_tipFragment_to_homeFragment)
