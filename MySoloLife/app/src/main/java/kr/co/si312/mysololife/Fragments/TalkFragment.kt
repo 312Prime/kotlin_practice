@@ -1,5 +1,6 @@
 package kr.co.si312.mysololife.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import kr.co.si312.mysololife.R
+import kr.co.si312.mysololife.board.BoardListLVAdpter
+import kr.co.si312.mysololife.board.BoardModel
+import kr.co.si312.mysololife.board.BoardWriteActivity
 import kr.co.si312.mysololife.databinding.FragmentTalkBinding
 import kr.co.si312.mysololife.databinding.FragmentTipBinding
 
@@ -23,7 +27,16 @@ class TalkFragment : Fragment() {
             // Inflate the layout for this fragment
             binding = FragmentTalkBinding.inflate(layoutInflater)
 
-            binding = FragmentTalkBinding.inflate(layoutInflater)
+            val boardList = mutableListOf<BoardModel>()
+            boardList.add(BoardModel("a","b","c","d"))
+            val boardLVAdapter = BoardListLVAdpter(boardList)
+
+            binding.boardListView.adapter = boardLVAdapter
+
+            binding.writeBtn.setOnClickListener {
+                val intent = Intent(context,BoardWriteActivity::class.java)
+                startActivity(intent)
+            }
 
             binding.homeTap.setOnClickListener {
                 it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)

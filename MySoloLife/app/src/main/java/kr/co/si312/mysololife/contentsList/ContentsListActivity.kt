@@ -40,7 +40,6 @@ class ContentsListActivity : AppCompatActivity() {
 
         val category = intent.getStringExtra("category")
 
-
         if(category == "category1") {
             myRef = database.getReference("contents")
 
