@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySoloLife">
         <activity
+            android:name=".board.BoardInsideActivity"
+            android:exported="false" />
+        <activity
             android:name=".board.BoardWriteActivity"
             android:exported="true" />
         <activity
