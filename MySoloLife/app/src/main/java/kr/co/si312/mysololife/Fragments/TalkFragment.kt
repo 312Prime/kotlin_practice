@@ -26,8 +26,9 @@ import kr.co.si312.mysololife.utils.FBRef
 class TalkFragment : Fragment() {
         private lateinit var binding: FragmentTalkBinding
         private val TAG = TalkFragment::class.java.simpleName
-       private val boardDataList = mutableListOf<BoardModel>()
-    private lateinit var boardLVAdapter : BoardListLVAdpter
+        private val boardDataList = mutableListOf<BoardModel>()
+        private val boardKeyList = mutableListOf<String>()
+        private lateinit var boardLVAdapter : BoardListLVAdpter
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -43,40 +44,44 @@ class TalkFragment : Fragment() {
 
             binding.boardListView.adapter = boardLVAdapter
 
-            binding.boardListView.setOnItemClickListener{parent, view, position, id ->
-                val intent = Intent(context,BoardInsideActivity::class.java)
-                intent.putExtra("title",boardDataList[position].title)
-                intent.putExtra("content",boardDataList[position].content)
-                intent.putExtra("time",boardDataList[position].time)
-                startActivity(intent)
-            }
             //첫번째 방법으로는 ListView에 있는 데이터 title content time 다 다른액티비티로 전달해서 제작
+            binding.boardListView.setOnItemClickListener { parent, view, position, id ->
+//                val intent = Intent(context,BoardInsideActivity::class.java)
+//                intent.putExtra("title",boardDataList[position].title)
+//                intent.putExtra("content",boardDataList[position].content)
+//                intent.putExtra("time",boardDataList[position].time)
+//                startActivity(intent)
 
-            //두번째 방법으로는 firebase에 있는 board에 대한 데이터의 id를 기반으로 다시 데이터를 받아오는 방법
-
-            binding.writeBtn.setOnClickListener {
-                val intent = Intent(context,BoardWriteActivity::class.java)
+                //두번째 방법으로는 firebase에 있는 board에 대한 데이터의 id를 기반으로 다시 데이터를 받아오는 방법
+                val intent = Intent(context, BoardInsideActivity::class.java)
+                intent.putExtra("key", boardKeyList[position])
                 startActivity(intent)
-            }
 
-            binding.homeTap.setOnClickListener {
-                it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)
             }
-            binding.tipTap.setOnClickListener {
-                it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
-            }
-            binding.bookmarkTap.setOnClickListener {
-                it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
-            }
-            binding.storeTap.setOnClickListener {
-                it.findNavController().navigate(R.id.action_talkFragment_to_storeFragment)
-            }
+                binding.writeBtn.setOnClickListener {
+                    val intent = Intent(context, BoardWriteActivity::class.java)
+                    startActivity(intent)
+                }
 
-            getFBBoardData()
 
-            return binding.root
+                binding.homeTap.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)
+                }
+                binding.tipTap.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
+                }
+                binding.bookmarkTap.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
+                }
+                binding.storeTap.setOnClickListener {
+                    it.findNavController().navigate(R.id.action_talkFragment_to_storeFragment)
+                }
+
+                getFBBoardData()
+
+                return binding.root
+
         }
-
     private fun getFBBoardData(){
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -86,10 +91,13 @@ class TalkFragment : Fragment() {
                 for (dataModel in dataSnapshot.children) {
 
                     Log.d(TAG,dataModel.toString())
+//                    dataModel.key
 
                     val item = dataModel.getValue(BoardModel::class.java)
                     boardDataList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
                 }
+                boardKeyList.reverse()
                 boardDataList.reverse()
                 boardLVAdapter.notifyDataSetChanged()
                 Log.d(TAG,boardDataList.toString())
