@@ -46,4 +46,10 @@
         android:background="@drawable/background_radius"
         android:textColor="@color/black" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="30dp"
+        android:id="@+id/getImageArea"/>
+
 </LinearLayout>
