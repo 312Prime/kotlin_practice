@@ -3,7 +3,10 @@ package kr.co.si312.mysololife.board
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
@@ -14,32 +17,45 @@ import com.google.firebase.storage.ktx.storage
 import kr.co.si312.mysololife.R
 import kr.co.si312.mysololife.databinding.ActivityBoardInsideBinding
 import kr.co.si312.mysololife.utils.FBRef
+import java.lang.Exception
 
 class BoardInsideActivity : AppCompatActivity() {
 
     private val TAG = BoardInsideActivity::class.java.simpleName
     private lateinit var binding: ActivityBoardInsideBinding
+    private lateinit var key : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardInsideBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.boardSettingIcon.setOnClickListener {
+            showDialog()
+        }
 
-//          첫번째 방법
-//        val title = intent.getStringExtra("title").toString()
-//        val content = intent.getStringExtra("content").toString()
-//        val time = intent.getStringExtra("time").toString()
-//
-//        binding.TitleArea.text = title
-//        binding.TextArea.text = content
-//        binding.TimeArea.text = time
+        key = intent.getStringExtra("key").toString()
 
-//          두번째 방법
-        val key = intent.getStringExtra("key")
+        getBoardData(key)
+        getImageData(key)
+    }
 
-        getBoardData(key.toString())
-        getImageData(key.toString())
+    private fun showDialog(){
+
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog,null)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("게시글 수정/삭제")
+
+        val alertDialog = mBuilder.show()
+        alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
+            Toast.makeText(this,"aa",Toast.LENGTH_SHORT).show()
+        }
+        alertDialog.findViewById<Button>(R.id.deleteBtn)?.setOnClickListener {
+            FBRef.boardRef.child(key).removeValue()
+            finish()
+            Toast.makeText(this,"삭제되었습니다",Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun getImageData(key: String){
@@ -66,12 +82,16 @@ class BoardInsideActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val dataModel= dataSnapshot.getValue(BoardModel::class.java)
-                Log.d(TAG,dataModel!!.title)
+                try {
+                    val dataModel= dataSnapshot.getValue(BoardModel::class.java)
 
-                binding.TitleArea.text = dataModel!!.title
-                binding.TextArea.text = dataModel!!.content
-                binding.TimeArea.text = dataModel!!.time
+                    binding.TitleArea.text = dataModel!!.title
+                    binding.TextArea.text = dataModel!!.content
+                    binding.TimeArea.text = dataModel!!.time
+
+                } catch (e: Exception){
+                    Log.d(TAG,"삭제완료")
+                }
             }
             override fun onCancelled(databaseError: DatabaseError) {
                 // Getting Post failed, log a message
