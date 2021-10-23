@@ -3,7 +3,7 @@
     package="kr.co.si312.mysololife">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MySoloLife">
+        <activity
+            android:name=".board.BoardEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".board.BoardActivity"
+            android:exported="false" />
         <activity
             android:name=".board.BoardInsideActivity"
             android:exported="false" />

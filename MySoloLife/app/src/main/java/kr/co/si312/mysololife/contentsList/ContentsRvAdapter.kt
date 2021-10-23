@@ -27,8 +27,6 @@ class ContentsRvAdapter(val context : Context,
     ): ContentsRvAdapter.Viewholder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.contents_rv_item,parent,false)
 
-        Log.d("ContentRVAdapter",keyList.toString())
-        Log.d("ContentRVAdapter",bookmarkIdList.toString())
         return Viewholder(v)
     }
 

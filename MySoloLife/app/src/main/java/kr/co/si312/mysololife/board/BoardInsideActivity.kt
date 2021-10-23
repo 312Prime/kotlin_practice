@@ -1,5 +1,6 @@
 package kr.co.si312.mysololife.board
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -49,7 +50,10 @@ class BoardInsideActivity : AppCompatActivity() {
 
         val alertDialog = mBuilder.show()
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
-            Toast.makeText(this,"aa",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"수정 버튼을 눌렀습니다",Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, BoardEditActivity::class.java)
+            intent.putExtra("key",key)
+            startActivity(intent)
         }
         alertDialog.findViewById<Button>(R.id.deleteBtn)?.setOnClickListener {
             FBRef.boardRef.child(key).removeValue()
@@ -63,7 +67,7 @@ class BoardInsideActivity : AppCompatActivity() {
         // Reference to an image file in Cloud Storage
         val storageReference = Firebase.storage.reference.child(key + ".png")
 
-// ImageView in your Activity
+        // ImageView in your Activity
         val imageViewFromFB = binding.getImageArea
 
         storageReference.downloadUrl.addOnCompleteListener(OnCompleteListener { task ->
