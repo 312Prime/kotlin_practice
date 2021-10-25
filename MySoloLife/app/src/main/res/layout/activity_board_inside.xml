@@ -7,6 +7,18 @@
     android:orientation="vertical"
     tools:context=".board.BoardInsideActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
@@ -26,6 +38,7 @@
             android:layout_marginRight="50dp"/>
 
     <ImageView
+        android:visibility="invisible"
         android:id="@+id/boardSettingIcon"
         android:layout_width="20dp"
         android:layout_height="40dp"
@@ -55,7 +68,7 @@
     <TextView
         android:id="@+id/TextArea"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_margin="20dp"
         android:background="@drawable/background_radius"
         android:padding="10dp"
@@ -65,9 +78,39 @@
     <ImageView
         android:id="@+id/getImageArea"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="300dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:scaleType="fitCenter" />
 
+    <ListView
+        android:id="@+id/commentLV"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="100dp"
+        android:layout_height="600dp" />
+
+</LinearLayout>
+    </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <EditText
+                android:id="@+id/commentArea"
+                android:layout_width="320dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="match_parent"
+                android:hint="댓글을 입력해주세요"
+                android:background="@android:color/transparent"
+                />
+
+            <ImageView
+                android:id="@+id/commentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btnwrite"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

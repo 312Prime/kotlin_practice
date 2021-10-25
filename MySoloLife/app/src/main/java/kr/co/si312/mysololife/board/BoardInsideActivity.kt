@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.database.DataSnapshot
@@ -16,15 +17,20 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kr.co.si312.mysololife.R
+import kr.co.si312.mysololife.comment.CommentLVAdapter
+import kr.co.si312.mysololife.comment.CommentModel
 import kr.co.si312.mysololife.databinding.ActivityBoardInsideBinding
+import kr.co.si312.mysololife.utils.FBAuth
 import kr.co.si312.mysololife.utils.FBRef
 import java.lang.Exception
 
 class BoardInsideActivity : AppCompatActivity() {
 
     private val TAG = BoardInsideActivity::class.java.simpleName
+    private val commentDataList = mutableListOf<CommentModel>()
     private lateinit var binding: ActivityBoardInsideBinding
     private lateinit var key : String
+    private lateinit var commentAdapter : CommentLVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardInsideBinding.inflate(layoutInflater)
@@ -39,7 +45,58 @@ class BoardInsideActivity : AppCompatActivity() {
 
         getBoardData(key)
         getImageData(key)
+
+
+        binding.commentBtn.setOnClickListener {
+            insertComment(key)
+        }
+        getCommentData(key)
+
+        commentAdapter = CommentLVAdapter(commentDataList)
+        binding.commentLV.adapter = commentAdapter
+
+
     }
+
+    fun getCommentData(key: String){
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                commentDataList.clear()
+                for (dataModel in dataSnapshot.children) {
+                    val item = dataModel.getValue(CommentModel::class.java)
+                    commentDataList.add(item!!)
+                }
+                commentAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w("ContentsListActivity", "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FBRef.commentRef.child(key).addValueEventListener(postListener)
+    }
+
+    fun insertComment(key : String){
+        //comment
+        //  -BoardKey
+        //      -CommentKey
+        //          -CommentData
+        //          -CommentData
+        //          -CommentData
+        FBRef
+            .commentRef
+            .child(key)
+            .push()
+            .setValue(
+                CommentModel(binding.commentArea.text.toString()),
+                FBAuth.getTime()
+            )
+        
+        Toast.makeText(this, "댓글이 작성되었습니다", Toast.LENGTH_SHORT).show()
+        binding.commentArea.setText("")
+    }
+
 
     private fun showDialog(){
 
@@ -77,7 +134,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     .load(task.result)
                     .into(imageViewFromFB)
             } else {
-
+                binding.getImageArea.isVisible = false
             }
         })
     }
@@ -88,11 +145,17 @@ class BoardInsideActivity : AppCompatActivity() {
 
                 try {
                     val dataModel= dataSnapshot.getValue(BoardModel::class.java)
+                    val myuid = FBAuth.getUid()
+                    val writeuid = dataModel?.uid
 
                     binding.TitleArea.text = dataModel!!.title
                     binding.TextArea.text = dataModel!!.content
                     binding.TimeArea.text = dataModel!!.time
 
+                    if (writeuid.equals(myuid)){
+                        binding.boardSettingIcon.isVisible = true
+                    } else{
+                    }
                 } catch (e: Exception){
                     Log.d(TAG,"삭제완료")
                 }

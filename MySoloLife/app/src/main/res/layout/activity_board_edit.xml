@@ -68,14 +68,14 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/plusbtn" />
         <Button
-            android:id="@+id/writeButton"
+            android:id="@+id/editButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="50dp"
             android:background="@drawable/background_radius_yellow"
-            android:text="입력"/>
+            android:text="수정"/>
 
     </LinearLayout>
 
