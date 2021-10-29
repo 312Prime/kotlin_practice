@@ -33,11 +33,14 @@ class BoardListLVAdpter(val boardList : MutableList<BoardModel>) :BaseAdapter() 
             view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item, parent,false)
 //        }
         val itemLinearlayoutView = view?.findViewById<LinearLayout>(R.id.itemView)
+
+
         val title = view?.findViewById<TextView>(R.id.titleArea)
-        title!!.text = boardList[position].title
         val content = view?.findViewById<TextView>(R.id.contentArea)
-        content!!.text = boardList[position].content
         val time = view?.findViewById<TextView>(R.id.timeArea)
+
+        title!!.text = boardList[position].title
+        content!!.text = boardList[position].content
         time!!.text = boardList[position].time
 
         if (boardList[position].uid.equals(FBAuth.getUid())){
