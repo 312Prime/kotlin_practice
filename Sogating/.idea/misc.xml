@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/Sogating/app/src/main/res/layout/activity_intro.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/Ryclia/Desktop/kotlin/Sogating/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Ryclia/Desktop/kotlin/Sogating/app/src/main/res/layout/activity_splash.xml" value="0.2638888888888889" />
         <entry key="..\:/Users/Ryclia/Desktop/kotlin/Sogating/app/src/main/res/layout/item_card.xml" value="0.32256410256410256" />
       </map>
     </option>
