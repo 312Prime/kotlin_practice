@@ -1,12 +1,17 @@
 package kr.co.si312.sogating
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.yuyakaido.android.cardstackview.CardStackLayoutManager
 import com.yuyakaido.android.cardstackview.CardStackListener
 import com.yuyakaido.android.cardstackview.CardStackView
 import com.yuyakaido.android.cardstackview.Direction
+import kotlinx.android.synthetic.main.activity_main.*
+import kr.co.si312.sogating.auth.IntroActivity
 import kr.co.si312.sogating.slider.CardStackAdapter
 
 class MainActivity : AppCompatActivity() {
@@ -17,6 +22,15 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        settingIcon.setOnClickListener{
+
+            val auth = Firebase.auth
+            auth.signOut()
+
+            val intent = Intent(this, IntroActivity::class.java)
+            startActivity(intent)
+        }
 
         val cardStackView = findViewById<CardStackView>(R.id.cardStackView)
 
